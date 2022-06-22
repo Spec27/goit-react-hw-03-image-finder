@@ -1,0 +1,14 @@
+.BcgImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit:scale-down;
+    background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+    background-image: url('../Img/vista-3840x2160-avrora-23361.jpg');
+}
+.Container{
+   width: 1920px;
+  min-height: 100vh;
+}
