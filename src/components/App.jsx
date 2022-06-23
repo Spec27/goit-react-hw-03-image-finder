@@ -32,7 +32,7 @@ class App extends Component{
       })
       .then(pictures => {
         if (!pictures.total) {
-          toast.error('Знайшов');
+          toast.error('Sorry bro, nothing was found for your query');
         }
         const properties = pictures.hits.map(
           ({ id, largeImageURL, webformatURL }) => {
