@@ -2,17 +2,17 @@
 import React, { Component } from "react";
 import ImageGalleryItem from "../ImageGalleryItem"
 import s from "./ImageGallery.module.css"
-import Modal from "components/Modal";
+/* import Modal from "components/Modal"; */
 import PropTypes from 'prop-types'
 
 
 class ImageGallery extends Component{
-    state = {
+  /*   state = {
         showModal: false,
         bigImgUrl:null,
-    }
+    } */
 
-    componentDidMount() {
+   /*  componentDidMount() {
         document.addEventListener('click', this.hendleClick);
     }
 
@@ -38,27 +38,26 @@ class ImageGallery extends Component{
         this.setState(({showModal})=> ({
             showModal: !showModal
         }))
-    };
-
+    }; */
 
 
     render() {
-        const {showModal,bigImgUrl}=this.state
+        /* const {showModal,bigImgUrl}=this.state */
         return (
             <>
-                <ul className={s.ImageGalery} onClick={this.toggleModal}>
-                    {this.props.images.map(img => {
+                <ul className={s.ImageGalery} /* onClick={this.toggleModal} */>
+                    {this.props.images.map(({ id,webformatURL,largeImageURL})=> {
                         return (
                             <ImageGalleryItem 
-                                key={img.id}
-                                smallImgURL={img.webformatURL}
-                                id={img.id}
+                                key={id}
+                                smallImgURL={webformatURL}
+                                id={id}
+                                bigUrl={largeImageURL}
                             /> 
                         )
                     })}
-                    
                 </ul>
-                {showModal && bigImgUrl && <Modal onClose={this.toggleModal} picture={bigImgUrl } />} 
+               {/*  {showModal && bigImgUrl &&  <Modal onClose={this.toggleModal} picture={bigImgUrl } />} */} 
             </>
           
         );

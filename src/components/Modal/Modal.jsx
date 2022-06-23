@@ -31,9 +31,9 @@ class Modal extends Component{
 
     render () {
         return createPortal (
-            <div className={s.Overlay} >
+            <div className={s.Overlay} onClick={this.hendleBackdropClick}>
                 <div className={s.Modal}>
-                    <img src={this.props.picture} alt='' />
+                    <img src={this.props.srs/* .picture */} alt='' />
                 </div>
             </div>,modalRoot,
         );
@@ -41,7 +41,7 @@ class Modal extends Component{
 };
 
 Modal.propTypes = {
-    picture: PropTypes.string.isRequired,
+    srs: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
   };
 
