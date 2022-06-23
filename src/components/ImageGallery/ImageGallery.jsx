@@ -2,9 +2,9 @@
 import React, { Component } from "react";
 import ImageGalleryItem from "../ImageGalleryItem"
 import s from "./ImageGallery.module.css"
-import shortid from "shortid";
 import Modal from "components/Modal";
 import PropTypes from 'prop-types'
+
 
 class ImageGallery extends Component{
     state = {
@@ -13,18 +13,26 @@ class ImageGallery extends Component{
     }
 
     componentDidMount() {
-        document.addEventListener('click', event => {
-          if (event.target.nodeName !== 'IMG') {
+        document.addEventListener('click', this.hendleClick);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.hendleClick)
+    }
+    
+    hendleClick = event => {
+        if (event.target.nodeName !== 'IMG') {
             this.setState({ showModal: false });
-            return;
-          } else {
+          return;
+        }
+        else {
             let picture = this.props.images.filter(obj => {
               return obj.id === parseInt(event.target.alt);
             });
             this.setState({ bigImgUrl: picture[0].largeImageURL });
           }
-        });
-      }
+    }
+
 
     toggleModal = () => {
         this.setState(({showModal})=> ({
@@ -42,7 +50,7 @@ class ImageGallery extends Component{
                     {this.props.images.map(img => {
                         return (
                             <ImageGalleryItem 
-                                key={shortid.generate()}
+                                key={img.id}
                                 smallImgURL={img.webformatURL}
                                 id={img.id}
                             /> 

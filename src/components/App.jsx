@@ -17,6 +17,7 @@ class App extends Component{
     isLoading: false,
     page: 1,
     query: '',
+    totalHits: null,
   };
 
   fetchImages = () => {
@@ -42,6 +43,7 @@ class App extends Component{
           return {
             pictures: [...prevState.pictures, ...properties],
             isLoading: false,
+            totalHits: pictures.total,
           };
         });
       })
@@ -79,7 +81,7 @@ class App extends Component{
 
   
   render() {
-    const { pictures, isLoading} = this.state;
+    const { pictures, isLoading,totalHits } = this.state;
     return (
       <>
         <div className={s.BcgImg}>
@@ -87,9 +89,9 @@ class App extends Component{
           <ToastContainer autoClose={4000}
             position={'top-right'}/>
             <Searchbar onSubmit={this.handleFormSubmit} />
-            {pictures.length > null && <ImageGallery images={pictures} />}
+            {pictures.length > 0 && <ImageGallery images={pictures} />}
             {isLoading && <Loader/>}
-            {pictures.length > null && !isLoading && (<Button onClick={this.hendleLoadMore} />)}
+            {totalHits > pictures.length && !isLoading && (<Button onClick={this.hendleLoadMore} />)}
            </div>
         </div>
       </>
