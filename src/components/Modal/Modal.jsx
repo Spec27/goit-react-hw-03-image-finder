@@ -33,7 +33,7 @@ class Modal extends Component{
         return createPortal (
             <div className={s.Overlay} onClick={this.hendleBackdropClick}>
                 <div className={s.Modal}>
-                    <img src={this.props.srs/* .picture */} alt='' />
+                    <img src={this.props.srs} alt='' />
                 </div>
             </div>,modalRoot,
         );
